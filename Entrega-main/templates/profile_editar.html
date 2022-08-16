@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+
+<form method="post" action="/accounts/profile/editar">
+    {% csrf_token %}
+
+    <div>
+        {{user.email}}
+    </div>
+
+
+    <!-- Imagen -->
+    <div>
+        <label for="imagen">Imagen: </label>
+        <input id="imagen" type="url" name="imagen" value="{{ url_imagen }}">
+    </div>
+
+
+    <!-- Nombre -->
+    <div>
+        <label for="nombre">Username: </label>
+        <input id="nombre" type="text" name="nombre" value="{{ user.username }}">
+    </div>
+
+    <!-- descripcion -->
+    <div>
+        <label for="descripcion">Descripcion: </label>
+        <input id="descripcion" type="text" name="descripcion" value="{{ descripcion }}">
+    </div>
+
+
+    <div>
+        <input type="submit" value="Guardar">
+    </div>
+
+</form>
+
+
+<style>
+    .info {
+        font-weight: bold;
+    }
+</style>
+
+{% endblock %}

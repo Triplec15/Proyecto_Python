@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+{% if form.errors %}
+<p>Tus credenciales son erróneas</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p>No tenés acceso a esta página</p>
+{% else %}
+<p>Por favor iniciá sesión.</p>
+{% endif %}
+{% endif %}
+
+<form method="post" action="/accounts/signup">
+    {% csrf_token %}
+    <div>
+        <label for="username">Username: </label>
+        <input id="username" type="text" name="username">
+    </div>
+
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" type="text" name="email">
+    </div>
+
+    <div>
+        <label for="password">Contraseña: </label>
+        <input id="password" type="password" name="password">
+    </div>
+
+    <input type="submit" value="SIGN UP">
+</form>
+
+{% endblock %}

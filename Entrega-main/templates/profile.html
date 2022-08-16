@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+
+<table>
+
+    <div class="info">
+        {{ user.email }}
+    </div>
+    <div class="info" id="imagen">
+        <img src="{{ url_imagen }}" />
+    </div>
+
+    <div class="info">Nombre de usuario:<b> {{ user.username }}</b></div>
+    <div class="info">Descripcion:<b> {{ descripcion}}</b></div>
+    <div class="info">Es admin:<b> {{ user.is_staff }}</b></div>
+    <div class="info">Ingresado el:<b> {{ user.date_joined }}</b></div>
+
+    <span id="boton_editar">
+        <a href="/accounts/profile/editar">
+            Editar
+        </a>
+    </span>
+
+</table>
+
+
+<style>
+    .info {
+        background-color: lightgray;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 5px
+    }
+
+    #boton_editar a {
+        background-color: green;
+        padding: 5px;
+        color: white;
+        border-radius: 10px;
+        margin: 10px;
+    }
+
+    #imagen {
+        border-radius: 100px;
+        overflow: hidden;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+{% endblock %}

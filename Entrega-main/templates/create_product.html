@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+   Crear producto
+{% endblock %}
+
+{% block contenido %}
+{% load crispy_forms_tags %}
+
+{% if form %}
+    <h1> Crear un nuevo producto</h1>
+
+    <form action="" class="formario_producto" method="post">
+        <div class="form-group col-5">
+          <div class="col-10">
+            {% csrf_token %}
+            {{form | crispy }}
+        <button type="submit" id="btnEnviar" class="btn btn-primary">Enviar</button>
+        <button type="reset" id="btnEnviar" class="btn btn-danger">Borrar</button>
+         </div>
+        </div>
+      </form>
+
+{% elif new_product %}
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{new_product.name}}</h5>
+            <p class="card-text">{{new_product.description}}</p>
+            <p class="card-text">{{new_product.price}}</p>
+        </div>
+    </div>
+
+{% endif %}
+
+{% endblock %}
